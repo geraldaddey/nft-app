@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Finally We Stick to Mobile Development</Text>
+      <Text> Creating a new app on this shit </Text>
+      <Text>A simple NFT Marketplace Course App </Text>
       <StatusBar style="auto" />
     </View>
   );
