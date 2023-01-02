@@ -1,12 +1,40 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
+import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function App() {
+  const { header, button, container } = styles;
+  const [count, setCount] = useState(0);
+
+  const handleIncrease = () => {
+    setCount((count) => (count += 1));
+    console.log(count);
+    console.log("Plus Clicked");
+  };
+  const handleDecrease = () => {
+    setCount((count) => (count -= 1));
+    console.log(count);
+    console.log(" Minus Clicked");
+  };
+
+  const handleReset = () => {
+    setCount((count) => (count = 0));
+    console.log(count);
+    console.log("reset Clicked");
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={header}>
       <Text> Creating a new app on this shit </Text>
       <Text>A simple NFT Marketplace Course App </Text>
-      <Text>Now we can build cool stuff and view directly on PC</Text>
+      <Text>Now we build cool stuff and view directly on PC</Text>
+      <button onClick={handleIncrease}> + </button>
+      <button onClick={handleDecrease}> - </button>
+      <button onClick={handleReset}> Reset </button>
+
+      <Text> {count} </Text>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -18,5 +46,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  header: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "red",
+    borderColor: "white",
+    width: "80%",
+    margin: "auto",
+    borderRadius: "10%",
+    padding: "2rem",
+  },
+
+  button: {
+    marginTop: "2rem",
   },
 });
