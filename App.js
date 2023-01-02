@@ -6,6 +6,7 @@ export default function App() {
     <View style={styles.container}>
       <Text> Creating a new app on this shit </Text>
       <Text>A simple NFT Marketplace Course App </Text>
+      <Text>Now we can build cool stuff and view directly on PC</Text>
       <StatusBar style="auto" />
     </View>
   );
