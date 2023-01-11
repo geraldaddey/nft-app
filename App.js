@@ -16,6 +16,13 @@ import Details from "./screens/Details";
 import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 const App = () => {
+  const [loaded] = useFonts({
+    Outfit: require("./assets/fonts/Outfit-Regular.ttf"),
+    OutfitSemiBold: require("./assets/fonts/Outfit-Bold.ttf"),
+    OutfitLight: require("./assets/fonts/Outfit-SemiBold.ttf"),
+    OutfitBold: require("./assets/fonts/Outfit-Light.ttf"),
+  });
+
   const Stack = createStackNavigator();
   const theme = {
     ...DefaultTheme,
@@ -27,17 +34,19 @@ const App = () => {
 
   const { header, button, container } = styles; //destructure styles
 
-  return (
-    <NavigationContainer theme={theme}>
-      <Stack.Navigator
-        screenOptions={{ headerShown: true }}
-        initialRouteName="Home"
-      >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Details" component={Details} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  if (!loaded) return null;
+  else
+    return (
+      <NavigationContainer theme={theme}>
+        <Stack.Navigator
+          screenOptions={{ headerShown: true }}
+          initialRouteName="Home"
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Details" component={Details} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
 };
 
 const styles = StyleSheet.create({
