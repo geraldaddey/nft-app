@@ -1,3 +1,6 @@
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
@@ -8,9 +11,11 @@ import {
   Platform,
   NavigatorIOS,
 } from "react-native";
+import Home from "./screens/Home";
+import Details from "./screens/Details";
 import { withSafeAreaInsets } from "react-native-safe-area-context";
 
-export default function App() {
+const App = () => {
   const [count, setCount] = useState(0);
 
   const handleIncrease = () => {
@@ -30,23 +35,29 @@ export default function App() {
     console.log("reset Clicked");
   };
 
+  const Stack = createStackNavigator();
+  const theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: "transparent",
+    },
+  };
+
   const { header, button, container } = styles; //destructor styles
 
   return (
-    <View style={header}>
-      <Text> Creating a new app on this shit </Text>
-      <Text>A simple NFT Marketplace Course App </Text>
-      <Text>Now we build cool stuff and view directly on PC</Text>
-      <button onClick={handleIncrease}> + </button>
-      <button onClick={handleDecrease}> - </button>
-      <button onClick={handleReset}> Reset </button>
-
-      <Text> {count} </Text>
-
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+        initialRouteName="Home"
+      >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -71,3 +82,5 @@ const styles = StyleSheet.create({
     marginTop: "2rem",
   },
 });
+
+export default App;
