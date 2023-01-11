@@ -16,25 +16,6 @@ import Details from "./screens/Details";
 import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
-  const handleIncrease = () => {
-    setCount((count) => (count += 1));
-    console.log(count);
-    console.log("Plus Clicked");
-  };
-  const handleDecrease = () => {
-    setCount((count) => (count -= 1));
-    console.log(count);
-    console.log(" Minus Clicked");
-  };
-
-  const handleReset = () => {
-    setCount((count) => (count = 0));
-    console.log(count);
-    console.log("reset Clicked");
-  };
-
   const Stack = createStackNavigator();
   const theme = {
     ...DefaultTheme,
@@ -44,12 +25,12 @@ const App = () => {
     },
   };
 
-  const { header, button, container } = styles; //destructor styles
+  const { header, button, container } = styles; //destructure styles
 
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator
-        screenOptions={{ headerShown: false }}
+        screenOptions={{ headerShown: true }}
         initialRouteName="Home"
       >
         <Stack.Screen name="Home" component={Home} />
