@@ -1,10 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Platform,
+  NavigatorIOS,
+} from "react-native";
 import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function App() {
-  const { header, button, container } = styles;
   const [count, setCount] = useState(0);
 
   const handleIncrease = () => {
@@ -23,6 +29,8 @@ export default function App() {
     console.log(count);
     console.log("reset Clicked");
   };
+
+  const { header, button, container } = styles; //destructor styles
 
   return (
     <View style={header}>
