@@ -4,8 +4,8 @@ import { View, Image, Text } from "react-native";
 
 import { COLORS, SIZES, SHADOWS, assets } from "../constants";
 
-const NFTCard = (image) => {
-  // const navigation = useNavigation();
+const NFTCard = (children) => {
+  const navigation = useNavigation();
 
   return (
     <View
@@ -24,7 +24,7 @@ const NFTCard = (image) => {
         }}
       >
         <Image
-          source={image}
+          source={children.image}
           resizeMode="cover"
           style={{
             width: "100%",
@@ -33,8 +33,8 @@ const NFTCard = (image) => {
             borderTopRightRadius: SIZES.font,
           }}
         />
+        {console.log(children)}
         <Text> Gerald's Card </Text>
-        {console.log(image)}
       </View>
 
       <View style={{ width: "100%", padding: SIZES.font }}>

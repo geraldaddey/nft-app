@@ -6,6 +6,5 @@ const FocusedStatusBar = (props) => {
   const IsFocused = useIsFocused();
 
   return IsFocused ? <StatusBar animated={true} {...props} /> : null;
-};
-
+}; 
 export default FocusedStatusBar;
